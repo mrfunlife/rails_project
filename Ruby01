@@ -1,0 +1,141 @@
+=begin
+def helloWord(country)
+  return "Hello " + country
+end
+
+puts helloWord("VietNam")
+=end
+=begin
+$gb = 6
+module ModuleM
+  puts "Inside Module"
+  $gb = 5
+  puts $gb
+end
+
+def method1
+puts "Inside Method"
+puts $gb
+end
+
+#global.rb
+class Some
+puts "Inside class"
+puts $gb
+end
+
+method1
+puts "Inside TopLevel"
+puts $gb
+puts global_variables.include?:$gb
+=end
+
+#Demo Instance Varibles
+=begin
+class Customer
+def initialize(id, name, addr)
+  @cust_id = id
+  @cust_name = name
+  @cust_addr = addr
+end
+
+def display_details()
+  puts "Customer id #@cust_id"
+  puts "Customer name #@cust_name"
+  puts "Customer addr #@cust_addr"
+end
+end
+
+#CreateObject
+cust1 = Customer.new(1,"John","Wisdom Apartments, Ludhiya")
+cust2 = Customer.new(2,"Poul","New Empire Road, Khandaia")
+
+#CallMethod
+cust1.display_details()
+custcleasplay_details()
+=end
+
+
+
+
+#Demo Class Variables
+class CustomerTwo
+
+  SELECT_ATTR = "id,name,code,email"
+  @@no_of_customer = 0
+
+
+  def self.statistic()
+    puts "Statistic"
+  end
+
+  class << self
+    def statistic()
+      puts "Statistic"
+    end
+  end
+
+  def initialize(id,name,addr)
+     @cust_id = id
+     @cust_name = name
+     @cust_addr = addr
+  end
+
+  def display_details()
+     puts "Customer id #{@cust_id}"
+     puts "Customer name #{@cust_name}"
+     puts "Customer addr #{@cust_addr}"
+  end
+
+  def total_no_of_customer()
+    @@no_of_customer += 1
+    puts "Total number of customer: #@@no_of_customer"
+  end
+end
+
+#CreatObject
+cust3 = CustomerTwo.new(1,"David","VietNam")
+cust4 = CustomerTwo.new(2,"Paper","HaNoi")
+
+#CallMethod
+cust3.total_no_of_customer()
+cust4.total_no_of_customer()
+
+CustomerTwo.statistic
+
+
+=begin
+#DemoLocalVaribles
+def local_varible()
+  x = 5
+  p x
+end
+local_varible
+p x
+=end
+
+#Contants
+BRAND = "FRAMGIA VIETNAM"
+puts BRAND
+puts CustomerTwo::SELECT_ATTR
+
+
+puts [2,-1,3,-4].delete_if{|x|x < 0}
+[1,2,3].each do |e|
+  puts e
+end
+
+if true
+  puts "Framgia Welcome"
+end
+
+
+class Array
+  def map!
+    self.each_with_index do |value,index|
+      self[index] = yield value
+      end
+  end
+end
+
+p [1,2,3].map!{|i|i*2}
